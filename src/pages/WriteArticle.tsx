@@ -2,7 +2,7 @@ import ArticleEditor from "../components/ArticleEditor";
 
 const WriteArticlePage = () => {
     return (
-      <div className="tw-h-screen">
+      <div className="">
         <ArticleEditor />
       </div>
     );

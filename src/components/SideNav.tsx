@@ -1,25 +1,13 @@
-import {
-  IconApps,
-  IconPen,
-  IconBug,
-  IconBulb,
-  IconVideoCamera,
-  IconDriveFile,
-  IconClockCircle,
-  IconLock,
-  IconUser,
-  IconSettings,
-  IconNotification,
-  IconBook,
-} from '@arco-design/web-react/icon';
 import { Menu } from '@arco-design/web-react';
-import { RiAppsLine } from 'react-icons/ri';
+import {
+    IconApps, IconBook, IconBulb, IconClockCircle, IconDriveFile, IconLock, IconNotification, IconPen, IconSettings, IconUser, IconVideoCamera
+} from '@arco-design/web-react/icon';
 const MenuItem = Menu.Item;
 const SubMenu = Menu.SubMenu;
 
 const SideNav = () => {
   return (
-    <div className="tw-min-h-screen tw-shadow-lg">
+    <div className="tw-h-screen tw-shadow-lg">
       <Menu
         className={' tw-bg-slate-500'}
         style={{ width: 280, height: '100vh' }}
