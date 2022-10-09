@@ -1,8 +1,5 @@
-import ArticleEditor from '../components/ArticleEditor';
 import SideNav from '../components/SideNav';
-import TopBar from '../components/TopBar';
 import WriteArticlePage from './WriteArticle';
-import { Button } from '@arco-design/web-react';
 import WriteVideo from './WriteVideo';
 
 const IndexPage = () => {
@@ -11,7 +8,7 @@ const IndexPage = () => {
       <SideNav />
       <div className="tw-h-screen tw-overflow-y-scroll">
         <div className="tw-mx-10 tw-my-10">
-          <WriteVideo/>
+          <WriteArticlePage/>
         </div>
       </div>
     </div>

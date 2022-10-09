@@ -1,6 +1,16 @@
 import { Menu } from '@arco-design/web-react';
 import {
-    IconApps, IconBook, IconBulb, IconClockCircle, IconDriveFile, IconLock, IconNotification, IconPen, IconSettings, IconUser, IconVideoCamera
+  IconApps,
+  IconBook,
+  IconBulb,
+  IconClockCircle,
+  IconDriveFile,
+  IconLock,
+  IconNotification,
+  IconPen,
+  IconSettings,
+  IconUser,
+  IconVideoCamera,
 } from '@arco-design/web-react/icon';
 const MenuItem = Menu.Item;
 const SubMenu = Menu.SubMenu;
@@ -14,11 +24,14 @@ const SideNav = () => {
         defaultOpenKeys={['0']}
         defaultSelectedKeys={['0_1']}
       >
-        <div className="tw-font-bold tw-text-lg tw-text-center tw-my-5">中原科技网 创作平台</div>
+        <div className="tw-font-bold tw-text-lg tw-text-center tw-my-5">
+          <img className="tw-rounded-lg tw-h-16 tw-w-16 tw-my-3" src={'./logo.png'} />
+          中原科技网 创作平台
+        </div>
         <MenuItem key="0">
           <span className="tw-font-bold">
             <IconApps />
-            {"概览"}
+            {'概览'}
           </span>
         </MenuItem>
         <SubMenu
@@ -26,18 +39,18 @@ const SideNav = () => {
           title={
             <>
               <span className="tw-font-bold">
-                <IconPen /> {"内容发布"}
+                <IconPen /> {'内容发布'}
               </span>
             </>
           }
         >
           <MenuItem key="1_0">
             <IconDriveFile />
-            {"写文章"}
+            {'写文章'}
           </MenuItem>
           <MenuItem key="1_1">
             <IconVideoCamera />
-            {"发视频"}
+            {'发视频'}
           </MenuItem>
         </SubMenu>
         <SubMenu
@@ -45,45 +58,45 @@ const SideNav = () => {
           title={
             <>
               <span className="tw-font-bold">
-                <IconBulb /> {"内容管理"}
+                <IconBulb /> {'内容管理'}
               </span>
             </>
           }
         >
-          <MenuItem key="2_1">{"文章管理"}</MenuItem>
-          <MenuItem key="2_2">{"视频管理"}</MenuItem>
+          <MenuItem key="2_1">{'文章管理'}</MenuItem>
+          <MenuItem key="2_2">{'视频管理'}</MenuItem>
         </SubMenu>
         <SubMenu
           key="3"
           title={
             <>
               <span className="tw-font-bold">
-                <IconSettings /> {"账号管理"}
+                <IconSettings /> {'账号管理'}
               </span>
             </>
           }
         >
           <MenuItem key="3_0">
             <IconClockCircle />
-            {"操作记录"}
+            {'操作记录'}
           </MenuItem>
           <MenuItem key="3_1">
             <IconLock />
-            {"账户安全"}
+            {'账户安全'}
           </MenuItem>
           <MenuItem key="3_2">
             <IconUser />
-            {"账户形象"}
+            {'账户形象'}
           </MenuItem>
         </SubMenu>
         <MenuItem key="4">
           <span className="tw-font-bold">
-            <IconNotification /> {"消息通知"}
+            <IconNotification /> {'消息通知'}
           </span>
         </MenuItem>
         <MenuItem key="5">
           <span className="tw-font-bold">
-            <IconBook /> {"手册与文件"}
+            <IconBook /> {'手册与文件'}
           </span>
         </MenuItem>
       </Menu>
