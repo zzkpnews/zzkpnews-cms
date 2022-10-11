@@ -1,39 +1,40 @@
 import { Input, Progress, Select, Switch, Upload } from '@arco-design/web-react';
-import '@wangeditor/editor/dist/css/style.css';
-
-import { IDomEditor, IEditorConfig, IToolbarConfig } from '@wangeditor/editor';
-import { Editor, Toolbar } from '@wangeditor/editor-for-react';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { IconEdit, IconPlus } from '@arco-design/web-react/icon';
+import Engine, { EngineInterface } from '@aomao/engine';
+import Toolbar, { ToolbarPlugin, ToolbarComponent } from '@aomao/toolbar';
 
 interface ArticleEditorProps {
   mode: 'new' | 'update';
 }
 
 const ArticleEditor = () => {
-  const [editor, setEditor] = useState<IDomEditor | null>(null);
-  const [html, setHtml] = useState('<p>hello</p>');
   const [file, setFile] = useState<any>();
   const cs = `arco-upload-list-item${file && file.status === 'error' ? ' is-error' : ''}`;
 
-  useEffect(() => {
-    setTimeout(() => {
-      setHtml('<p>hello world</p>');
-    }, 1500);
-  }, []);
+  //编辑器容器
+  const ref = useRef<HTMLDivElement | null>(null);
+  //引擎实例
+  const [engine, setEngine] = useState<EngineInterface>(new Engine(ref.current!, { plugins: [ToolbarPlugin], cards: [ToolbarComponent] }));
+  //编辑器内容
+  const [content, setContent] = useState<string>('Hello word!');
 
-  const toolbarConfig: Partial<IToolbarConfig> = {}; // TS 语法
+  // useEffect(() => {
+    // if (!ref.current) return;
+    //实例化引擎
+    // const engine = new Engine(ref.current, { plugins: [ToolbarPlugin], cards: [ToolbarComponent] });
+    //设置编辑器值
+    engine.setValue(content);
+    //监听编辑器值改变事件
+    engine.on('change', () => {
+      const value = engine.getValue();
+      setContent(value);
+      console.log(`value:${value}`);
+    });
+    //设置引擎实例
+    setEngine(engine);
+  // }, []);
 
-  const editorConfig: Partial<IEditorConfig> = {
-    placeholder: '请输入内容...',
-  };
-  useEffect(() => {
-    return () => {
-      if (editor == null) return;
-      editor.destroy();
-      setEditor(null);
-    };
-  }, [editor]);
   const options = ['Beijing', 'Shanghai', 'Guangzhou', 'Shenzhen', 'Chengdu', 'Wuhan'];
   return (
     <div className="">
@@ -98,20 +99,8 @@ const ArticleEditor = () => {
         </div>
       </div>
       <div className="tw-mx-0" style={{ border: '1px solid #ccc', zIndex: 100 }}>
-        <Toolbar
-          editor={editor}
-          defaultConfig={toolbarConfig}
-          mode="default"
-          style={{ borderBottom: '1px solid #ccc' }}
-        />
-        <Editor
-          defaultConfig={editorConfig}
-          value={html}
-          onCreated={setEditor}
-          onChange={(editor) => setHtml(editor.getHtml())}
-          mode="default"
-          style={{ height: '500px', overflowY: 'hidden' }}
-        />
+        <Toolbar engine={engine!} items={[['collapse'], ['bold']]} />
+        <div ref={ref} />;
       </div>
       <div style={{ margin: 12, display: 'inline-block' }}>
         <span>专栏：</span>
